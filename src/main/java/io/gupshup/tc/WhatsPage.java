@@ -98,13 +98,13 @@ public class WhatsPage {
         boolean err = false;
         try{
             try{
-                page.waitForSelector(NEW_CHAT_IMG,
+                page.waitForSelector(NEW_CHAT_NOT_SAVED,
                         oneSecondWait);
-                clickElement(NEW_CHAT_IMG);
+                clickElement(NEW_CHAT_NOT_SAVED);
             }catch (Exception e){
-                page.waitForSelector(NEW_CHAT_SVG,
+                page.waitForSelector(NEW_CHAT_SAVED,
                         oneSecondWait);
-                clickElement(NEW_CHAT_SVG);
+                clickElement(NEW_CHAT_SAVED);
             }
 
         }catch (Exception e){
