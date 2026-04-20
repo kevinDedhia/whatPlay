@@ -10,8 +10,8 @@ import static io.gupshup.tc.constans.Constants.*;
 public class WhatsPage {
 
     private final Page page;
-    private final Browser browser;
     private final Playwright playwright;
+    private final BrowserContext context;
 
     Page.WaitForSelectorOptions oneSecondWait =  new Page.WaitForSelectorOptions()
                                 .setTimeout(2000).setState(WaitForSelectorState.ATTACHED);
@@ -19,13 +19,9 @@ public class WhatsPage {
     WhatsPage(){
         playwright = Playwright.create();
 
-        browser = playwright.chromium().launch(
-        new BrowserType.LaunchOptions().setHeadless(false)
-        );
-
-        BrowserContext context = playwright.chromium().launchPersistentContext(
+        context = playwright.chromium().launchPersistentContext(
         Paths.get("user-data"),
-        new BrowserType.LaunchPersistentContextOptions()
+        new BrowserType.LaunchPersistentContextOptions().setChannel("chrome")
                 .setHeadless(false)
         );
 
@@ -52,10 +48,6 @@ public class WhatsPage {
         attachFile(file);
     }
 
-    public void sendMessage(String number, String message){
-            sendTextMessage(number, message, true);
-    }
-
     private void sendTextMessage(String number, String message, boolean pressEnter){
 
         clickNewChat(number);
@@ -78,12 +70,8 @@ public class WhatsPage {
     }
 
     public void closeBrowser(){
-        if(browser != null && browser.isConnected()){
-            browser.close();
-            System.out.println("Browser Closed");
-            playwright.close();
-        }
-
+        context.close();
+        playwright.close();
     }
 
     private void clickNewChat(String number){

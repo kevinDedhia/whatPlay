@@ -57,11 +57,6 @@ public class WhatsAppSender {
 
     }
 
-    public void sendMessageToCustomers(String message, String excel) throws IOException {
-        sendMessageToCustomers(message, excel, null);
-    }
-
-
     public Map<String, Integer> getStats(){
        return stats;
     }
