@@ -97,9 +97,15 @@ public class WhatsPage {
         page.waitForTimeout(1000);
         boolean err = false;
         try{
-            page.waitForSelector(NEW_CHAT_IMG,
-                    oneSecondWait);
-            clickElement(NEW_CHAT_IMG);
+            try{
+                page.waitForSelector(NEW_CHAT_IMG,
+                        oneSecondWait);
+                clickElement(NEW_CHAT_IMG);
+            }catch (Exception e){
+                page.waitForSelector(NEW_CHAT_SVG,
+                        oneSecondWait);
+                clickElement(NEW_CHAT_SVG);
+            }
 
         }catch (Exception e){
             err = true;

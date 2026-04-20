@@ -7,6 +7,7 @@ public class Constants {
     public static String BACK_BUTTON = "button[aria-label='Back']";
     public static String MESSAGE_BOX = "div[contenteditable='true'][role='textbox']";
     public static String FILE_SEND_BUTTON = "div[aria-label='Send']";
-    public static String NEW_CHAT_IMG = "xpath=/html/body/div[1]/div/div/div/div/div[3]/div/div[3]/div[1]/div/span/div/span/div/div[3]/div[3]/div[1]/div/div/div";
+    public static String NEW_CHAT_IMG = "xpath=/html/body/div[1]/div/div/div/div/div[3]/div/div[3]/div[1]/div/span/div/span/div/div[3]/div[2]/div/div/div/div/div/div[1]/div/div/img";
+    public static String NEW_CHAT_SVG = "xpath=/html/body/div[1]/div/div/div/div/div[3]/div/div[3]/div[1]/div/span/div/span/div/div[3]/div[3]/div[1]/div/div/div/span";
 
 }
